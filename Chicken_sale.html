@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chiken Sale Page</title>
+<style>
+:root{--green:#245c3b;--green2:#34784d;--cream:#fffaf0;--orange:#e99a3d;--ink:#1e2a22;--muted:#68736b;--card:#fff;--line:#e7e1d4}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:var(--cream);color:var(--ink)}
+header{position:sticky;top:0;z-index:5;background:#fffdf8eF;backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{max-width:1150px;margin:auto;padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-weight:900;font-size:22px;color:var(--green)}.logo span{font-size:27px}
+.cart{border:0;background:var(--green);color:white;padding:11px 16px;border-radius:999px;font-weight:800;cursor:pointer}
+.hero{max-width:1150px;margin:0 auto;padding:64px 22px 38px;display:grid;grid-template-columns:1.05fr .95fr;gap:42px;align-items:center}
+.badge{display:inline-block;background:#e5f1e7;color:var(--green);padding:7px 11px;border-radius:999px;font-weight:800;font-size:13px}
+h1{font-size:clamp(40px,6vw,70px);line-height:.98;margin:16px 0;color:var(--green)}
+.hero p{font-size:18px;line-height:1.6;color:var(--muted);max-width:620px}
+.hero-img{height:390px;border-radius:30px;overflow:hidden;box-shadow:0 20px 60px #245c3b22;background:#dfead9}
+.hero-img img{width:100%;height:100%;object-fit:cover}
+section{max-width:1150px;margin:auto;padding:20px 22px 70px}.section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:22px}
+h2{font-size:32px;margin:0;color:var(--green)}.sub{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 8px 25px #26351a0b}
+.card img{width:100%;height:190px;object-fit:cover}.body{padding:16px}.tag{font-size:12px;font-weight:800;color:var(--green2)}
+.name{font-size:20px;font-weight:900;margin:6px 0}.desc{font-size:14px;color:var(--muted);min-height:40px}.row{display:flex;align-items:center;justify-content:space-between;margin-top:14px}
+.price{font-size:20px;font-weight:900}.add{border:0;background:var(--orange);color:#2e210f;padding:10px 12px;border-radius:12px;font-weight:900;cursor:pointer}
+.banner{margin-top:30px;background:var(--green);color:#fff;padding:28px;border-radius:24px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.banner h3{margin:0 0 5px;font-size:24px}.banner p{margin:0;color:#d9eadf}.whats{background:#fff;color:var(--green);padding:12px 17px;border-radius:999px;font-weight:900;text-decoration:none;white-space:nowrap}
+footer{text-align:center;padding:30px;color:var(--muted);border-top:1px solid var(--line)}
+.toast{position:fixed;right:22px;bottom:22px;background:#1d2b22;color:white;padding:14px 18px;border-radius:14px;opacity:0;transform:translateY(15px);transition:.25s;pointer-events:none}.toast.show{opacity:1;transform:none}
+@media(max-width:850px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.hero-img{height:300px}}
+@media(max-width:520px){.grid{grid-template-columns:1fr}.nav{padding:13px 15px}.hero,section{padding-left:15px;padding-right:15px}.banner{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<header><div class="nav"><div class="logo"><span></span> Chicken Sale</div><button class="cart" onclick="showCart()">Cart (<span id="count">0</span>)</button></div></header>
+
+<main>
+<div class="hero">
+  <div>
+    <h1>Few chicken<br>But good Chicken.</h1>
+    <p>Family business selling chickens, please just buy one of each.</p>
+  </div>
+  <div class="hero-img"><img src="https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?auto=format&fit=crop&w=1000&q=85" alt="Galinhas em uma granja"></div>
+</div>
+
+<section id="produtos">
+ <div class="section-head"><div><h2>Our Fowls</h2><div class="sub">Please be a good owner.</div></div></div>
+ <div class="grid">
+  <article class="card"><img src="galinha1.jfif.png"><div class="body"><div class="tag"></div><div class="name">Naked Neck Chiken</div><div class="desc">Not good looking but good mother.</div><div class="row"><span class="price">R$ 45,00</span><button class="add" onclick="add('Naked Neck Chiken',45)">Add they</button></div></div></article>
+  <article class="card"><img src="galinha2.png"><div class="body"><div class="tag"></div><div class="name">Shamo Rooster</div><div class="desc">Often used to fight.</div><div class="row"><span class="price">R$ 50,00</span><button class="add" onclick="add('Shamo Rooster',50)">Add they</button></div></div></article>
+  <article class="card"><img src="galinha3.png"><div class="body"><div class="tag"></div><div class="name">Bantam Hen</div><div class="desc">Can be carried in one hand (very small).</div><div class="row"><span class="price">R$ 60,00</span><button class="add" onclick="add('Bantam Hen',60)">Add they</button></div></div></article>
+  <article class="card"><img src="bunny.gif"><div class="body"><div class="tag"></div><div class="name">Not a Chicken</div><div class="desc">But he's very fluffy and smooth tho.</div><div class="row"><span class="price">R$ 8,00</span><button class="add" onclick="add('Not a Chicken',8)">Add they</button></div></div></article>
+ </div>
+ <div class="banner"><div><h3>Contact us</h3></div><a class="whats" href="https://wa.me/5595991662822" target="_blank">💬 WhatsApp</a></div>
+</section>
+</main>
+<footer>© 2026 Chicken sale · Fowls and Not-Fowls</footer>
+<div class="toast" id="toast"></div>
+<script>
+let cart=[];
+function add(name,price){cart.push({name,price});document.getElementById('count').textContent=cart.length;toast(name+' added to your cart.')}
+function toast(t){let x=document.getElementById('toast');x.textContent=t;x.classList.add('show');setTimeout(()=>x.classList.remove('show'),1800)}
+function showCart(){if(!cart.length){toast('Your cart is empty.');return}let total=cart.reduce((s,x)=>s+x.price,0);let items=cart.map(x=>'> '+x.name+' - R$ '+x.price.toFixed(2).replace('.',',')).join('\n');alert('Your Cart:\n\n'+items+'\n\nTOTAL: R$ '+total.toFixed(2).replace('.',','));}
+</script>
+</body></html>
